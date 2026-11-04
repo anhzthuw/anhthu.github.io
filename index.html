@@ -1,0 +1,649 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Happy Birthday Khánh Vy </title>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700&family=Dancing+Script:wght@500;600;700&display=swap');
+
+:root {
+  --blue: #78aee8;
+  --deep-blue: #477fb8;
+  --pale-blue: #eaf5ff;
+  --white: #ffffff;
+  --text: #526b86;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  min-height: 100vh;
+  font-family: 'Quicksand', sans-serif;
+  color: var(--text);
+  background: linear-gradient(145deg, #e8f4ff, #ffffff 55%, #dceeff);
+  overflow-x: hidden;
+}
+
+button {
+  font-family: inherit;
+  cursor: pointer;
+}
+
+.background-decor {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.bubble {
+  position: absolute;
+  border-radius: 50%;
+  background: rgba(255,255,255,.55);
+  animation: float 8s ease-in-out infinite;
+}
+
+.bubble:nth-child(1) {
+  width: 100px;
+  height: 100px;
+  top: 10%;
+  left: 8%;
+}
+
+.bubble:nth-child(2) {
+  width: 65px;
+  height: 65px;
+  top: 65%;
+  right: 10%;
+  animation-delay: 2s;
+}
+
+.bubble:nth-child(3) {
+  width: 45px;
+  height: 45px;
+  bottom: 8%;
+  left: 20%;
+  animation-delay: 4s;
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-22px); }
+}
+
+.screen {
+  display: none;
+  position: relative;
+  z-index: 1;
+  min-height: 100vh;
+  padding: 45px 20px;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  text-align: center;
+  animation: appear .8s ease;
+}
+
+.screen.active {
+  display: flex;
+}
+
+@keyframes appear {
+  from { opacity: 0; transform: translateY(18px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+h1 {
+  color: var(--deep-blue);
+  font-size: clamp(2rem, 6vw, 3.5rem);
+  margin-bottom: 14px;
+}
+
+h2 {
+  color: var(--deep-blue);
+  font-size: clamp(1.5rem, 4vw, 2.2rem);
+  margin-bottom: 18px;
+}
+
+.subtitle {
+  font-size: 1rem;
+  line-height: 1.8;
+  max-width: 520px;
+}
+
+.script {
+  font-family: 'Dancing Script', cursive;
+  color: var(--deep-blue);
+}
+
+/* Màn hình bánh sinh nhật */
+
+.cake-area {
+  position: relative;
+  width: 250px;
+  height: 245px;
+  margin: 35px 0 20px;
+}
+
+.cake {
+  position: absolute;
+  width: 190px;
+  height: 105px;
+  left: 30px;
+  bottom: 25px;
+  background: #91bee9;
+  border-radius: 12px 12px 20px 20px;
+  box-shadow: 0 12px 0 #6d9fd0;
+}
+
+.cake::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 28px;
+  background: #f8fcff;
+  border-radius: 12px 12px 50% 50%;
+}
+
+.cake::after {
+  content: "♡  ♡  ♡";
+  position: absolute;
+  width: 100%;
+  text-align: center;
+  top: 47px;
+  color: white;
+  font-size: 22px;
+  letter-spacing: 8px;
+}
+
+.plate {
+  position: absolute;
+  width: 230px;
+  height: 17px;
+  left: 10px;
+  bottom: 10px;
+  background: #d3e8fa;
+  border-radius: 50%;
+}
+
+.candle {
+  position: absolute;
+  width: 13px;
+  height: 65px;
+  background: repeating-linear-gradient(
+    45deg,
+    #ffffff,
+    #ffffff 7px,
+    #a5ccf1 7px,
+    #a5ccf1 14px
+  );
+  left: 118px;
+  bottom: 130px;
+  border-radius: 4px;
+}
+
+.flame {
+  position: absolute;
+  width: 20px;
+  height: 29px;
+  background: #ffd36d;
+  border-radius: 50% 50% 50% 50%;
+  left: 114.5px;
+  bottom: 194px;
+  transform-origin: center bottom;
+  box-shadow: 0 0 22px #ffd36d;
+  animation: flicker .7s infinite alternate;
+  cursor: pointer;
+  z-index: 3;
+}
+
+.flame::after {
+  content: "";
+  position: absolute;
+  width: 8px;
+  height: 15px;
+  background: #fff8d9;
+  border-radius: 50%;
+  left: 6px;
+  top: 8px;
+}
+
+@keyframes flicker {
+  from { transform: rotate(-5deg) scale(1); }
+  to { transform: rotate(5deg) scale(1.08); }
+}
+
+.flame.off {
+  display: none;
+}
+
+.smoke {
+  display: none;
+  position: absolute;
+  left: 118px;
+  bottom: 193px;
+  width: 15px;
+  height: 35px;
+  border-radius: 50%;
+  border-left: 3px solid #b7c8d8;
+  transform: rotate(-15deg);
+  animation: smoke 1.4s ease-out forwards;
+}
+
+.smoke.show {
+  display: block;
+}
+
+@keyframes smoke {
+  from { opacity: .8; transform: translateY(0) rotate(-15deg); }
+  to { opacity: 0; transform: translateY(-45px) rotate(20deg); }
+}
+
+.tap-hint {
+  margin-top: 8px;
+  color: #7298bd;
+  font-size: .9rem;
+  animation: pulse 1.5s infinite;
+}
+
+@keyframes pulse {
+  50% { opacity: .45; }
+}
+
+/* Nội dung và nút */
+
+.content-card {
+  width: min(680px, 100%);
+  padding: clamp(25px, 5vw, 48px);
+  background: rgba(255,255,255,.82);
+  border: 1px solid rgba(255,255,255,.9);
+  border-radius: 26px;
+  box-shadow: 0 15px 45px rgba(91,139,184,.13);
+  text-align: left;
+}
+
+.content-card p {
+  line-height: 1.95;
+  margin-bottom: 16px;
+  font-size: 1rem;
+}
+
+.center {
+  text-align: center;
+}
+
+.button {
+  border: none;
+  border-radius: 30px;
+  padding: 13px 27px;
+  margin-top: 25px;
+  background: linear-gradient(135deg, #91bde9, #6d9fd0);
+  color: white;
+  font-size: 1rem;
+  font-weight: 700;
+  box-shadow: 0 6px 15px rgba(90,142,194,.2);
+  transition: .25s;
+}
+
+.button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 9px 20px rgba(90,142,194,.3);
+}
+
+.letter {
+  white-space: normal;
+}
+
+.letter .signature {
+  text-align: right;
+  margin-top: 28px;
+  color: var(--deep-blue);
+  font-family: 'Dancing Script', cursive;
+  font-size: 1.5rem;
+}
+
+/* Google Form */
+
+.form-frame {
+  width: 100%;
+  height: 1250px;
+  border: none;
+  border-radius: 15px;
+  background: white;
+  margin-top: 15px;
+}
+
+.form-note {
+  font-size: .9rem;
+  color: #7892ac;
+  line-height: 1.7;
+  margin-bottom: 12px;
+}
+
+/* Kết thúc */
+
+.heart {
+  color: #80addb;
+  font-size: 2rem;
+  animation: heartbeat 1.3s infinite;
+  margin: 15px;
+}
+
+@keyframes heartbeat {
+  50% { transform: scale(1.2); }
+}
+
+.music-control {
+  position: fixed;
+  z-index: 5;
+  right: 18px;
+  bottom: 18px;
+  border: none;
+  border-radius: 50px;
+  padding: 11px 16px;
+  color: var(--deep-blue);
+  background: rgba(255,255,255,.92);
+  box-shadow: 0 4px 16px rgba(65,110,155,.15);
+  font-weight: 700;
+  display: none;
+}
+
+#musicFrame {
+  position: fixed;
+  width: 1px;
+  height: 1px;
+  opacity: 0;
+  pointer-events: none;
+  bottom: 0;
+  left: 0;
+}
+
+@media (max-width: 600px) {
+  .screen {
+    padding: 30px 15px;
+  }
+
+  .content-card {
+    padding: 24px 20px;
+    border-radius: 20px;
+  }
+
+  .content-card p {
+    font-size: .95rem;
+  }
+
+  .cake-area {
+    transform: scale(.9);
+    margin: 15px 0;
+  }
+
+  .form-frame {
+    height: 1450px;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<div class="background-decor">
+  <div class="bubble"></div>
+  <div class="bubble"></div>
+  <div class="bubble"></div>
+</div>
+
+<!-- Nhạc YouTube -->
+<iframe
+  id="musicFrame"
+  title="Happy Birthday music"
+  allow="autoplay; encrypted-media"
+></iframe>
+
+<button class="music-control" id="musicButton" onclick="toggleMusic()">
+  ♫ Tắt nhạc
+</button>
+
+<!-- MÀN 1: BÁNH SINH NHẬT -->
+<section class="screen active" id="screen1">
+  <p class="script" style="font-size:1.8rem">A little surprise for you...</p>
+
+  <h1>Happy Birthday<br>Khánh Vy!</h1>
+
+  <p class="subtitle">
+    Hôm nay là một ngày thật đặc biệt.<br>
+    Trước khi bắt đầu, em hãy ước một điều nhé!
+  </p>
+
+  <div class="cake-area">
+    <div class="plate"></div>
+    <div class="cake"></div>
+    <div class="candle"></div>
+    <div class="flame" id="flame" onclick="blowCandle()"></div>
+    <div class="smoke" id="smoke"></div>
+  </div>
+
+  <p class="tap-hint" id="tapHint">
+    Chạm vào ngọn nến để thổi tắt nhé ✨
+  </p>
+</section>
+
+<!-- MÀN 2: LỜI CHÚC -->
+<section class="screen" id="screen2">
+  <div class="content-card center">
+    <p class="script" style="font-size:2rem">Dear Khánh Vy,</p>
+
+    <h2>Chúc mừng sinh nhật em! 🎂</h2>
+
+    <p>
+      Vậy là em đã bước sang một tuổi mới rồi.
+      Mong rằng tuổi mới sẽ mang đến cho em thật nhiều
+      niềm vui, những điều tốt đẹp và những trải nghiệm
+      đáng nhớ.
+    </p>
+
+    <p>
+      Hôm nay có một món quà nhỏ chị muốn gửi đến em.
+      Không phải thứ gì quá lớn lao, chỉ là một chút
+      tình cảm được gói ghém trong những dòng chữ này.
+    </p>
+
+    <p class="script" style="font-size:1.6rem">
+      Let's open your little letter 
+    </p>
+
+    <div class="center">
+      <button class="button" onclick="showScreen(3)">
+        Mở thư thôi! 💌
+      </button>
+    </div>
+  </div>
+</section>
+
+<!-- MÀN 3: LÁ THƯ -->
+<section class="screen" id="screen3">
+  <div class="content-card letter">
+    <h2 class="center">Một chút tâm tình gửi em </h2>
+
+    <p>
+      Ban đầu chị thật sự không nghĩ hai đứa mình sẽ chơi với nhau lâu đến vậy đâu. Chị cứ nghĩ chắc rồi cũng giống những người bạn trước đây, nói chuyện được một thời gian rồi dần dần ít liên lạc, cuối cùng chẳng còn trò chuyện với nhau nữa. Có lẽ vì những trải nghiệm trước đó nên chị cũng không còn kỳ vọng quá nhiều vào những tình bạn qua mạng. Vậy mà nhìn lại thì chúng mình cũng sắp quen nhau được một năm rồi đấy. Nhanh dữ ta =))
+    </p>
+
+    <p>
+      Chị nghĩ một phần lớn lý do khiến chúng mình có thể duy trì tình bạn đến bây giờ là nhờ em đó. Một cô bé siêu cấp đáng yêu, hoạt ngôn và luôn có thật nhiều chuyện thú vị để kể. Cảm ơn em vì đã mang đến những cuộc trò chuyện vui vẻ, những câu chuyện thường ngày và cả những điều nho nhỏ khiến một ngày bình thường của chị trở nên vui hơn.
+    </p>
+
+    <p>
+      Có lẽ em cũng đã đủ tin tưởng chị nên mới thoải mái kể cho chị nghe nhiều chuyện đến vậy. Từ những chuyện vui vu vơ thường ngày đến cả những nỗi lo, nỗi buồn mà đôi khi em không dễ dàng chia sẻ với người khác. Chị thật sự vui vì em đã chọn kể những điều ấy cho chị nghe. Chị không biết mình đã giúp được em nhiều hay ít, nhưng chị luôn mong rằng những lúc cần, em có thể tìm đến chị và kể cho chị nghe bất cứ điều gì em muốn. Chị luôn sẵn lòng lắng nghe em những câu chuyện của em.
+    </p>
+
+    <p>
+      Tuy hai đứa ở cách nhau khá xa, cuộc sống cũng chẳng có quá nhiều điểm chung, nhưng từ khi quen em, chị cảm thấy mình có thêm một người bạn để chia sẻ và trò chuyện mỗi ngày. Chị cũng không ngờ một người mình tình cờ gặp trong game lại có thể trở thành một người bạn quan trọng đến thế. Nên là cảm ơn em vì đã xuất hiện trong cuộc sống của chị nhé!
+    </p>
+
+    <p>
+      Nhân dịp sinh nhật, chị mong em sẽ luôn vui vẻ, khỏe mạnh, gặp được thật nhiều điều tốt đẹp và vẫn giữ được sự đáng yêu, hoạt bát của mình. Mong em sẽ luôn yêu thương bản thân, tự tin vào những gì mình có và đừng quá khắt khe với chính mình nhé. Dù sau này có gặp phải chuyện gì thì chị cũng mong em sẽ luôn có đủ can đảm để vượt qua và tiếp tục theo đuổi những điều mình mong muốn.
+    </p>
+
+    <p>
+      Mong em tuổi mới vẫn luôn giữ được sự hồn nhiên, vui vẻ và nguồn năng lượng tích cực của mình nhé. Hy vọng chặng đường phía trước sẽ có thật nhiều điều tốt đẹp đang chờ đón em! 
+    </p>
+
+    <p class="signature">
+      Sinh nhật vui vẻ nhé!<br>
+      — Anh Thư ⚝
+    </p>
+  </div>
+
+  <button class="button" onclick="showScreen(4)">
+    Còn một điều nữa nè...
+  </button>
+</section>
+
+<!-- MÀN 4: BIỂU MẪU -->
+<section class="screen" id="screen4">
+  <div class="content-card">
+    <div class="center">
+      <p class="script" style="font-size:1.8rem">
+        Your turn!
+      </p>
+
+      <h2>Đến lượt em rồi 💌</h2>
+
+      <p>
+        Chị cũng có vài điều muốn hỏi em.
+        Hãy trả lời thật thoải mái nhé!
+      </p>
+
+      <p class="form-note">
+        Những câu trả lời của em sẽ được gửi đến chị.
+        Không cần phải suy nghĩ quá lâu đâu,
+        cứ trả lời theo cảm nhận của em nhé.
+      </p>
+    </div>
+
+    <iframe
+      class="form-frame"
+      src="https://docs.google.com/forms/d/e/1FAIpQLSe1Q0_YOw6Q74BAX9QxhIcTUJtWYvvgnqaOzQSvmRPn2cHOKQ/viewform?embedded=true"
+      title="Biểu mẫu gửi lời nhắn cho chị"
+      loading="lazy"
+    >
+      Đang tải biểu mẫu...
+    </iframe>
+  </div>
+
+  <button class="button" onclick="showScreen(5)">
+    Đọc lời nhắn cuối nhé
+  </button>
+</section>
+
+<!-- MÀN 5: KẾT THÚC -->
+<section class="screen" id="screen5">
+  <div class="content-card center">
+    <p class="script" style="font-size:2rem">
+      That's all for today!
+    </p>
+
+    <h1>Happy Birthday, Vy! </h1>
+
+    <div class="heart">☆</div>
+
+    <p>
+      Cảm ơn em vì đã dành thời gian khám phá món quà
+      nhỏ này. Hy vọng em đã có một ngày sinh nhật
+      thật vui vẻ và đáng nhớ.
+    </p>
+
+    <p>
+      Hãy luôn là cô bé vui vẻ, hoạt bát và đáng yêu
+      theo cách của riêng em nhé!
+    </p>
+
+    <p class="script" style="font-size:1.8rem">
+      Sending you lots of love from !
+    </p>
+
+    <p style="margin-top:25px">
+      — Anh Thư ⚝
+    </p>
+  </div>
+</section>
+
+<script>
+const YOUTUBE_ID = "vhVBWw6rId0";
+
+let musicPlaying = false;
+let candleBlown = false;
+
+function showScreen(number) {
+  document.querySelectorAll(".screen").forEach(screen => {
+    screen.classList.remove("active");
+  });
+
+  document.getElementById("screen" + number).classList.add("active");
+
+  window.scrollTo({
+    top: 0,
+    behavior: "smooth"
+  });
+}
+
+function startMusic() {
+  if (musicPlaying) return;
+
+  const frame = document.getElementById("musicFrame");
+
+  frame.src =
+    "https://www.youtube-nocookie.com/embed/" +
+    YOUTUBE_ID +
+    "?autoplay=1&loop=1&playlist=" +
+    YOUTUBE_ID +
+    "&controls=1&rel=0";
+
+  musicPlaying = true;
+
+  document.getElementById("musicButton").style.display = "block";
+  document.getElementById("musicButton").textContent = "♫ Tắt nhạc";
+}
+
+function toggleMusic() {
+  const frame = document.getElementById("musicFrame");
+  const button = document.getElementById("musicButton");
+
+  if (musicPlaying) {
+    frame.src = "";
+    musicPlaying = false;
+    button.textContent = "♫ Bật nhạc";
+  } else {
+    startMusic();
+  }
+}
+
+function blowCandle() {
+  if (candleBlown) return;
+
+  candleBlown = true;
+
+  document.getElementById("flame").classList.add("off");
+  document.getElementById("smoke").classList.add("show");
+  document.getElementById("tapHint").textContent =
+    "Ước nguyện đã được gửi đi! ✨";
+
+  startMusic();
+
+  setTimeout(() => {
+    showScreen(2);
+  }, 1600);
+}
+</script>
+
+</body>
+</html>
